@@ -48,6 +48,7 @@ plugins:
 # their entries' file path in the `include:` list.
 #
 exclude:
+  - "*.code-workspace"
   - .sass-cache/
   - .jekyll-cache/
   - gemfiles/
