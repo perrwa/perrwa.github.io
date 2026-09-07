@@ -32,7 +32,10 @@ import HeaderLink from './HeaderLink.astro';
 		align-items: center;
 		height: 40px;
 		text-decoration: none;
-		color: rgb(var(--black));
+		color: rgb(var(--accent));
+	}
+	h2 a:hover {
+		color: rgb(var(--accent-hover));
 	}
 	nav {
 		display: flex;
@@ -60,6 +63,9 @@ import HeaderLink from './HeaderLink.astro';
 		text-decoration: none;
 	}
 	nav .internal-links a.active {
-		color: rgb(var(--black));
+		color: rgb(var(--accent));
+	}
+	nav .internal-links a.active:hover {
+		color: rgb(var(--accent-hover));
 	}
 </style>

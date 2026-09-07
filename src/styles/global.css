@@ -8,6 +8,7 @@
 	--bg: 253, 252, 250;
 	--accent: 44, 62, 99;
 	--accent-hover: 88, 110, 156;
+	--heading: 58, 66, 84;
 	--image-outline: oklch(0 0 0 / 0.1);
 	color-scheme: light dark;
 }
@@ -20,6 +21,7 @@
 		--bg: 20, 18, 15;
 		--accent: 154, 178, 224;
 		--accent-hover: 190, 208, 240;
+		--heading: 198, 204, 216;
 		--image-outline: oklch(1 0 0 / 0.1);
 	}
 }
@@ -57,7 +59,7 @@ h6 {
 	font-family: var(--serif);
 	font-weight: 600;
 	margin: 0 0 0.5em 0;
-	color: rgb(var(--black));
+	color: rgb(var(--heading));
 	line-height: 1.2;
 	letter-spacing: -0.01em;
 	text-wrap: balance;
