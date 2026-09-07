@@ -1,0 +1,10 @@
+dist/
+.astro/
+node_modules/
+package-lock.json
+
+# Claude Code project files, not part of the site
+.claude/
+
+# Not part of this CI change's scope
+.github/
