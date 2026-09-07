@@ -22,10 +22,17 @@ const posts = (await getCollection('blog')).sort(
 				padding: 0;
 			}
 			li {
-				margin-bottom: 2em;
+				padding: 1em 0;
+				border-bottom: 1px solid rgb(var(--gray-light));
+			}
+			li:first-child {
+				padding-top: 0;
+			}
+			li:last-child {
+				border-bottom: none;
 			}
 			.title {
-				margin: 0 0 0.15em 0;
+				margin: 0 0 0.3em 0;
 			}
 			.title a {
 				text-decoration: none;
@@ -36,10 +43,15 @@ const posts = (await getCollection('blog')).sort(
 			.date {
 				margin: 0 0 0.4em 0;
 				color: rgb(var(--gray));
-				font-size: 0.9em;
+				font-size: 0.85em;
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+				font-variant-numeric: tabular-nums;
 			}
 			.description {
 				margin: 0;
+				color: rgb(var(--gray-dark));
+				text-wrap: pretty;
 			}
 		</style>
 	</head>
@@ -50,12 +62,12 @@ const posts = (await getCollection('blog')).sort(
 				{
 					posts.map((post) => (
 						<li>
-							<h2 class="title">
-								<a href={`/blog/${post.id}/`}>{post.data.title}</a>
-							</h2>
 							<p class="date">
 								<FormattedDate date={post.data.pubDate} />
 							</p>
+							<h2 class="title">
+								<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+							</h2>
 							<p class="description">{post.data.description}</p>
 						</li>
 					))

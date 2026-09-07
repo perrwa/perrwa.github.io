@@ -5,8 +5,13 @@ const today = new Date();
 <footer>&copy; {today.getFullYear()} Perry Wang.</footer>
 <style>
 	footer {
-		padding: 2em 0 4em 0;
+		width: 620px;
+		max-width: calc(100% - 2em);
+		margin: 0 auto;
+		padding: 1.2em 1em 4em 1em;
+		border-top: 1px solid rgb(var(--gray-light));
 		color: rgb(var(--gray));
+		font-size: 0.9em;
 		text-align: left;
 	}
 </style>

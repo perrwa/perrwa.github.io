@@ -15,30 +15,51 @@ import HeaderLink from './HeaderLink.astro';
 </header>
 <style>
 	header {
-		margin: 0 0 2em 0;
+		width: 620px;
+		max-width: calc(100% - 2em);
+		margin: 0 auto;
+		padding: 1.5em 1em 1.2em 1em;
+		border-bottom: 1px solid rgb(var(--gray-light));
 	}
 	h2 {
 		margin: 0;
-		font-size: 1.1em;
+		font-size: 1.2em;
+		line-height: 40px;
 	}
 	h2 a,
 	h2 a.active {
+		display: inline-flex;
+		align-items: center;
+		height: 40px;
 		text-decoration: none;
 		color: rgb(var(--black));
 	}
 	nav {
 		display: flex;
-		align-items: baseline;
+		align-items: center;
 		justify-content: space-between;
 		flex-wrap: wrap;
 		gap: 0.5em;
 	}
-	nav a {
-		padding: 0 0 0 1em;
-		color: var(--black);
+	nav .internal-links {
+		display: flex;
+		align-items: center;
+		font-size: 0.85em;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+	}
+	nav .internal-links a {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 40px;
+		height: 40px;
+		padding: 0 0.3em;
+		margin-left: 0.8em;
+		color: rgb(var(--gray));
 		text-decoration: none;
 	}
-	nav a.active {
-		text-decoration: underline;
+	nav .internal-links a.active {
+		color: rgb(var(--black));
 	}
 </style>
