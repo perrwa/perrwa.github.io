@@ -6,5 +6,5 @@ package-lock.json
 # Claude Code project files, not part of the site
 .claude/
 
-# Not part of this CI change's scope
+# Workflow/Dependabot YAML, left as authored (Prettier rewrites quote style)
 .github/
