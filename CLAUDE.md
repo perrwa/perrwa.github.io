@@ -29,6 +29,7 @@ CI (`.github/workflows/ci.yml`) runs format:check, lint, check, build, and test 
 - **Site-wide constants** (title, description) live in `src/consts.ts` and are consumed by both pages and `src/pages/rss.xml.js`. `astro.config.mjs` holds the canonical `site` URL and font config (Source Serif 4 via Google Fonts, configured through Astro's built-in `fonts` API).
 - **Tests** (`tests/*.test.ts`) run against the _built_ `dist/` output (they trigger `npm run build` if `dist/` isn't present), not against source directly. `tests/content.test.ts` re-implements a manual frontmatter parser and duplicates the zod schema from `content.config.ts` in a comment-documented way, since `astro:content` is a virtual module unavailable outside the Astro build — keep that schema copy in sync manually when `content.config.ts` changes. `tests/build.test.ts` also checks for dead internal links by scanning `href` attributes in the built homepage.
 - Integrations enabled: `@astrojs/mdx`, `@astrojs/sitemap`, `@astrojs/rss`.
+- **Favicons** (`public/favicon.svg`, `public/favicon.ico`, `public/apple-touch-icon.png`) are generated artifacts synced from the private `perrwa/pilcrow` repo (the pilcrow brandmark), via a GitHub Action there that opens a PR here on change. Don't hand-edit them — change the mark in pilcrow and let the sync PR carry it over, or it'll get silently reverted next sync.
 
 ### Gotchas
 
