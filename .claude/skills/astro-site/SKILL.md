@@ -1,58 +1,52 @@
 ---
 name: astro-site
-description: Astro 7 conventions for this site — content collections, component structure, styling, and version-specific gotchas. Use when adding or editing .astro components, blog content, routing, or astro.config.mjs.
+description: How this site uses Astro 7 - content collections, components, styling conventions, and version-specific gotchas. Load for .astro components, blog content, routing, or config work.
 ---
 
 # Astro site conventions
 
 ## Scope
 
-This site is static-site-generated with no SSR adapter configured. Everything below assumes build-time rendering only — see **Out of scope** at the end for the features that require an adapter.
+This site builds with Astro's static output and no SSR adapter configured, so everything below assumes build-time rendering. The "Out of scope" section at the bottom lists what needs an adapter.
 
 ## Architecture
 
-- Server-render by default; ship zero client JS unless a feature genuinely needs interactivity.
-- Multi-page app, not single-page app — full navigations, not client-side routing.
-- For a small enhancement, a plain `<script>` tag beats pulling in a UI framework.
+Server-render by default and ship no client JavaScript unless a feature actually needs interactivity. The site is a multi-page app with full navigations rather than client-side routing. When a page needs a small enhancement, reach for a plain script tag before pulling in a UI framework.
 
 ## Content collections
 
-Follow the existing pattern in `src/content.config.ts`: `glob()` loader, `z` imported from `astro/zod` (not `astro:content`), schema as a flat `z.object()`. Query with `getCollection()` / `getEntry()`. New blog posts are markdown/MDX files under `src/content/blog/` with frontmatter matching that schema — no registration elsewhere needed.
+Follow the pattern already in `content.config.ts`. Loaders come from `glob()`, the schema's `z` import comes from `astro/zod` rather than `astro:content`, and the schema itself is a flat `z.object()`. Query collections with `getCollection()` or `getEntry()`. New blog posts are markdown or MDX files under `src/content/blog/` with frontmatter matching that schema; nothing else needs registering.
 
-Run `npx astro sync` after changing `content.config.ts` or `astro.config.mjs` so `.astro/types.d.ts` regenerates. If you touch the zod schema, also update the duplicated copy in `tests/content.test.ts` (it can't import `astro:content` outside the Astro build).
+After changing `content.config.ts` or `astro.config.mjs`, run `npx astro sync` so `.astro/types.d.ts` regenerates. If the zod schema itself changes, also update the duplicated copy in `tests/content.test.ts`, since that test can't import `astro:content` outside the Astro build.
 
 ## Components
 
-`.astro` for static content, PascalCase filenames, frontmatter script above the template, typed `Props` interface (see `src/components/BaseHead.astro`). Write valid, fully-closed HTML — the compiler errors on unclosed tags and does not auto-correct invalid nesting (e.g. a block element inside `<p>`).
+Write `.astro` files for static content, name them in PascalCase, and put the frontmatter script above the template with a typed `Props` interface, following the shape in `src/components/BaseHead.astro`. The compiler is strict about HTML validity. An unclosed tag or a block element nested inside a paragraph fails the build rather than rendering oddly.
 
-## Astro 7 gotchas
+## Astro 7 gotcha
 
-- **`compressHTML` defaults to `'jsx'`** as of v7.0 — whitespace between inline elements is stripped like JSX/React, not preserved like HTML. `<span>hello</span><em>world</em>` renders as `helloworld`. Add an explicit `{" "}` wherever a visible space between inline elements matters.
-- The compiler errors on unclosed tags rather than auto-correcting them — a missing closing tag fails the build, it doesn't just render oddly.
+`compressHTML` now defaults to `'jsx'`, so whitespace between inline elements gets stripped the same way JSX strips it. A `<span>` followed directly by an `<em>` will render with no space between them unless an explicit `{" "}` is added where the space needs to survive.
 
 ## Styling
 
-Scoped `<style>` blocks per component; shared tokens as CSS custom properties in `src/styles/global.css` (see `--accent`, `--gray`, etc.). Mobile-first.
+Each component keeps its own scoped style block, and shared tokens like accent and gray colors live as CSS custom properties in `src/styles/global.css`. Write mobile-first.
 
-- Prefer fluid type scales (`clamp()`) over fixed breakpoint jumps, but keep it restrained for an editorial/serif site — no `12vw` display type; body copy stays ≥16px.
-- Animate only `transform` and `opacity`; avoid `width`, `height`, `top`, `margin` in transitions/keyframes (they trigger layout).
-- Use `will-change` only on elements actively animating, and only for `transform`/`opacity`/`filter`; never `will-change: all`.
-- Guard hover-only affordances with `@media (hover: hover) and (pointer: fine)` so touch devices don't get stuck hover states.
-- Guard non-essential motion with `@media (prefers-reduced-motion: reduce)`.
-- For any visual-polish detail (border radius, shadows, icons, hover/press states, animation timing), defer to the `make-interfaces-feel-better` skill — it's more specific and wins on conflict.
+For type, prefer a fluid `clamp()` scale over hard breakpoint jumps, but keep it restrained for an editorial, serif site. Display type should not reach anything like `12vw`, and body copy should stay at 16px or larger. Animate only `transform` and `opacity`, since properties that affect box size or position, such as `width` or `top`, trigger layout. Reserve `will-change` for elements that are actually animating, limit it to `transform`, `opacity`, or `filter`, and drop it once the animation ends. Hover-only affordances belong behind a hover-capable media query so touch devices don't get stuck in a hover state, and anything beyond minor motion belongs behind a reduced-motion query.
+
+For anything more specific to visual polish, like border radius, shadows, icon states, or hover and press timing, defer to the `make-interfaces-feel-better` skill. It's more specific and wins if the two disagree.
 
 ## Images
 
-Use `astro:assets`' `<Image />` for content images (Sharp is the default service, no config needed for SSG). Always provide `alt`; lazy-load below-the-fold images.
+Use `astro:assets`'s `Image` component for content images. Sharp is the default service and needs no configuration for a static build. Always provide `alt` text, and lazy-load anything below the fold.
 
 ## SEO
 
-`src/components/BaseHead.astro` already owns canonical URL, OG/Twitter meta, sitemap link, and RSS link. Extend it rather than adding ad hoc per-page `<meta>` tags; add JSON-LD there too if it's ever needed.
+`BaseHead.astro` already owns the canonical URL, Open Graph and Twitter meta, the sitemap link, and the RSS link. Extend that component rather than adding page-specific meta tags, and put any future JSON-LD there too.
 
-## Out of scope until an SSR adapter is added
+## Out of scope until an adapter exists
 
-No adapter is configured, so don't reach for: Actions (`src/actions/`), Sessions (`Astro.session`), Server Islands (`server:defer`), API routes (`src/pages/api/`), or middleware. These all require on-demand rendering.
+No SSR adapter is configured, so Actions, Sessions, Server Islands, API routes, and middleware are all off the table for now. Each of those needs on-demand rendering.
 
 ## Authority
 
-For version-specific Astro API questions, check the `astro-docs` MCP server (`mcp__astro-docs__search_astro_docs`) rather than relying on training data — Astro's API surface moves fast across major versions.
+For anything version-specific about the Astro API, check the `astro-docs` MCP server rather than relying on memory. The API surface has moved fast across major versions.

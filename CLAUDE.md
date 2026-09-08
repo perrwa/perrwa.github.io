@@ -32,18 +32,15 @@ CI (`.github/workflows/ci.yml`) runs format:check, lint, check, build, and test 
 
 ### Gotchas
 
-- Astro 7 defaults `compressHTML` to `'jsx'`: whitespace between inline elements is stripped like JSX, not preserved like HTML. Add explicit `{" "}` where a visible space matters.
-- The Astro compiler errors on unclosed tags and does not auto-correct invalid nesting — a build failure, not a rendering quirk.
-- Run `npx astro sync` after editing `src/content.config.ts` or `astro.config.mjs` to regenerate `.astro/types.d.ts`.
-- Editing the zod schema in `content.config.ts` also requires updating the duplicated copy in `tests/content.test.ts` (see Architecture above).
+Astro 7 changed the default whitespace handling. `compressHTML` now defaults to `'jsx'`, so whitespace between inline elements gets stripped the same way JSX strips it, and `<span>hello</span><em>world</em>` renders as `helloworld` unless an explicit `{" "}` is added where the space needs to survive. Unclosed tags and invalid nesting fail the build now too; the compiler doesn't try to auto-correct them.
+
+Run `npx astro sync` after editing `src/content.config.ts` or `astro.config.mjs` so `.astro/types.d.ts` regenerates. If the zod schema itself changes, update the duplicated copy in `tests/content.test.ts` as well, since that test can't import `astro:content` outside the Astro build.
 
 ## Style
 
 - Prettier is the source of truth for formatting (`.prettierrc.mjs`): single quotes, semicolons, 100 print width, `prettier-plugin-astro` for `.astro` files. ESLint explicitly disables `astro/semi` since Prettier owns that.
-- Visual direction: editorial serif typography, high contrast, restrained motion. Avoid drifting toward generic sans-serif SaaS styling or heavy animation.
+- Keep new styling in the site's editorial serif register: high contrast, restrained motion. Generic sans-serif SaaS polish or heavy animation would break that.
 
-## Agent harness
+## Related skills and tools
 
-- `.claude/skills/astro-site/`: Astro 7 conventions and gotchas — load for component/content/routing/config work.
-- `.claude/skills/make-interfaces-feel-better/`: UI polish details (borders, shadows, animation, icons) — takes precedence over `astro-site` on any styling conflict.
-- `astro-docs` MCP server (`mcp__astro-docs__search_astro_docs`): prefer this over memory for version-specific Astro API questions.
+The `astro-site` skill covers Astro 7 conventions and gotchas; load it for component, content, routing, or config work. `make-interfaces-feel-better` covers detailed UI polish work, from border treatment to icon states, and wins if the two disagree on a styling question. For anything version-specific about the Astro API, check the `astro-docs` MCP server (`mcp__astro-docs__search_astro_docs`) instead of relying on memory.
