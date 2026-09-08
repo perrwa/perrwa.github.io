@@ -10,10 +10,10 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.google(),
-      name: 'Source Serif 4',
+      name: 'Joan',
       cssVariable: '--font-serif',
-      weights: [400, 600, 700],
-      styles: ['normal', 'italic'],
+      weights: [400],
+      styles: ['normal'],
       fallbacks: ['Charter', 'Georgia', 'serif'],
     },
   ],
