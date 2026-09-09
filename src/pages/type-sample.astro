@@ -92,6 +92,15 @@ import Header from '../components/Header.astro';
       .nav-preview.joan {
         font-family: var(--display);
       }
+      .nav-preview.tighten-1 {
+        letter-spacing: 0.03em;
+      }
+      .nav-preview.tighten-2 {
+        letter-spacing: 0em;
+      }
+      .nav-preview.tighten-3 {
+        letter-spacing: -0.02em;
+      }
       @media (max-width: 720px) {
         main.specimen {
           width: auto;
@@ -221,8 +230,32 @@ import Header from '../components/Header.astro';
             </div>
           </div>
           <div>
-            <p class="label">Joan</p>
+            <p class="label">Joan, 0.06em (untightened)</p>
             <div class="nav-preview joan">
+              <span class="active">Home</span>
+              <span>About</span>
+              <span>RSS</span>
+            </div>
+          </div>
+          <div>
+            <p class="label">Joan, 0.03em</p>
+            <div class="nav-preview joan tighten-1">
+              <span class="active">Home</span>
+              <span>About</span>
+              <span>RSS</span>
+            </div>
+          </div>
+          <div>
+            <p class="label">Joan, 0em</p>
+            <div class="nav-preview joan tighten-2">
+              <span class="active">Home</span>
+              <span>About</span>
+              <span>RSS</span>
+            </div>
+          </div>
+          <div>
+            <p class="label">Joan, -0.02em</p>
+            <div class="nav-preview joan tighten-3">
               <span class="active">Home</span>
               <span>About</span>
               <span>RSS</span>
