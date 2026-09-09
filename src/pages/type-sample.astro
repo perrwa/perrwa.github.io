@@ -107,7 +107,7 @@ import Header from '../components/Header.astro';
       .wordmark {
         margin: 0;
         font-family: var(--display);
-        font-weight: 400;
+        font-weight: 600;
         font-size: 1.2em;
         letter-spacing: -0.015em;
         color: rgb(var(--accent));
@@ -310,11 +310,11 @@ import Header from '../components/Header.astro';
       <section>
         <h2>Wordmark ("Perry Wang")</h2>
         <p class="summary">
-          Header.astro's h2 — inherits the global heading rule, so it moves with heading weight and
-          tracking decisions above.
+          Header.astro's h2 — inherits Joan and tracking from the global heading rule, but sets its
+          own weight one step heavier than other headings.
         </p>
         <div class="decision">
-          <p class="label current">Current — Joan (matches other headings)</p>
+          <p class="label current">Current — Joan, 600 (one step heavier than other headings)</p>
           <p class="wordmark">Perry Wang</p>
         </div>
         <div class="decision">
