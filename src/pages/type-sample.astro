@@ -47,16 +47,17 @@ import Header from '../components/Header.astro';
         margin-bottom: 0;
         padding-bottom: 0;
       }
+      .decision.is-current,
+      .wordmark-compare > .is-current {
+        border-left: 2px solid rgb(var(--accent));
+        padding-left: 1.25em;
+      }
       .label {
         margin: 0 0 0.5em 0;
         font-size: 0.75em;
         text-transform: uppercase;
         letter-spacing: 0.08em;
         color: rgb(var(--gray));
-      }
-      .label.current {
-        color: rgb(var(--accent));
-        font-weight: 700;
       }
       .heading-demo {
         margin: 0;
@@ -208,8 +209,8 @@ import Header from '../components/Header.astro';
           Joan ships one real weight (400) and no italic — every weight below 500+ is browser-
           synthesized, not a real font file.
         </p>
-        <div class="decision">
-          <p class="label current">Current — 500 (synthesized)</p>
+        <div class="decision is-current">
+          <p class="label">Current — 500 (synthesized)</p>
           <p class="heading-demo weight-500">The quiet type does more work</p>
         </div>
         <div class="decision">
@@ -231,8 +232,8 @@ import Header from '../components/Header.astro';
       <section>
         <h2>Heading letter-spacing</h2>
         <p class="summary">Applies to h1–h6 site-wide via the global heading rule.</p>
-        <div class="decision">
-          <p class="label current">Current — -0.015em</p>
+        <div class="decision is-current">
+          <p class="label">Current — -0.015em</p>
           <p class="heading-demo weight-500 track-current">Editing is where the argument happens</p>
         </div>
         <div class="decision">
@@ -252,8 +253,8 @@ import Header from '../components/Header.astro';
       <section>
         <h2>Nav links (Home / About / RSS)</h2>
         <p class="summary">Header.astro's .internal-links.</p>
-        <div class="decision">
-          <p class="label current">Current — Joan, 0.03em</p>
+        <div class="decision is-current">
+          <p class="label">Current — Joan, 0.03em</p>
           <div class="nav-preview joan tighten-1">
             <span class="active">Home</span>
             <span>About</span>
@@ -297,8 +298,8 @@ import Header from '../components/Header.astro';
       <section>
         <h2>Active nav-link weight</h2>
         <p class="summary">HeaderLink.astro's a.active. Same synthesis caveat as heading weight.</p>
-        <div class="decision">
-          <p class="label current">Current — 600 (synthesized semibold, accepted)</p>
+        <div class="decision is-current">
+          <p class="label">Current — 600 (synthesized semibold, accepted)</p>
           <p class="active-weight-preview">Home</p>
         </div>
         <div class="decision">
@@ -313,8 +314,8 @@ import Header from '../components/Header.astro';
           Header.astro's h2 — inherits the global heading rule, so it moves with heading weight and
           tracking decisions above.
         </p>
-        <div class="decision">
-          <p class="label current">Current — Joan (matches other headings)</p>
+        <div class="decision is-current">
+          <p class="label">Current — Joan (matches other headings)</p>
           <p class="wordmark">Perry Wang</p>
         </div>
         <div class="decision">
@@ -327,8 +328,8 @@ import Header from '../components/Header.astro';
         <div class="decision">
           <p class="label">Casing, considered — title case is current</p>
           <div class="wordmark-compare">
-            <div>
-              <p class="label current">Current — Title case</p>
+            <div class="is-current">
+              <p class="label">Current — Title case</p>
               <p class="wordmark">Perry Wang</p>
             </div>
             <div>
