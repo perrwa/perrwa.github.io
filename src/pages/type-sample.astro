@@ -52,6 +52,44 @@ import Header from '../components/Header.astro';
         grid-template-columns: 1fr 1fr;
         gap: 2em;
       }
+      .tracking-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75em;
+      }
+      .tracking-step {
+        padding-bottom: 1.75em;
+        border-bottom: 1px solid rgb(var(--gray-light));
+      }
+      .tracking-step:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .tracking-demo {
+        margin: 0 0 0.3em 0;
+        font-family: var(--display);
+        font-weight: 400;
+        color: rgb(var(--heading));
+        line-height: 1.2;
+      }
+      .tracking-demo--h1 {
+        font-size: 2.4em;
+      }
+      .tracking-demo--h3 {
+        font-size: 1.5em;
+      }
+      .track-current {
+        letter-spacing: -0.015em;
+      }
+      .track-1 {
+        letter-spacing: -0.005em;
+      }
+      .track-2 {
+        letter-spacing: 0em;
+      }
+      .track-3 {
+        letter-spacing: 0.01em;
+      }
       .wordmark-compare {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -142,6 +180,48 @@ import Header from '../components/Header.astro';
         <h1>Some ideas take longer to say plainly</h1>
         <h2>The long version is usually the first draft</h2>
         <h3>Editing is where the argument actually happens</h3>
+      </section>
+
+      <section>
+        <h2>Heading tracking (looser mockups)</h2>
+        <div class="tracking-steps">
+          <div class="tracking-step">
+            <p class="label">-0.015em (current, global default)</p>
+            <p class="tracking-demo tracking-demo--h1 track-current">
+              Some ideas take longer to say plainly
+            </p>
+            <p class="tracking-demo tracking-demo--h3 track-current">
+              Editing is where the argument happens
+            </p>
+          </div>
+          <div class="tracking-step">
+            <p class="label">-0.005em</p>
+            <p class="tracking-demo tracking-demo--h1 track-1">
+              Some ideas take longer to say plainly
+            </p>
+            <p class="tracking-demo tracking-demo--h3 track-1">
+              Editing is where the argument happens
+            </p>
+          </div>
+          <div class="tracking-step">
+            <p class="label">0em (normal)</p>
+            <p class="tracking-demo tracking-demo--h1 track-2">
+              Some ideas take longer to say plainly
+            </p>
+            <p class="tracking-demo tracking-demo--h3 track-2">
+              Editing is where the argument happens
+            </p>
+          </div>
+          <div class="tracking-step">
+            <p class="label">0.01em (loosest)</p>
+            <p class="tracking-demo tracking-demo--h1 track-3">
+              Some ideas take longer to say plainly
+            </p>
+            <p class="tracking-demo tracking-demo--h3 track-3">
+              Editing is where the argument happens
+            </p>
+          </div>
+        </div>
       </section>
 
       <section>
