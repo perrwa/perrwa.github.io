@@ -15,7 +15,7 @@ import HeaderLink from './HeaderLink.astro';
 </header>
 <style>
   header {
-    width: 620px;
+    width: var(--content-width);
     max-width: calc(100% - 2em);
     margin: 0 auto;
     padding: 1.5em 1em 1.2em 1em;
@@ -23,6 +23,8 @@ import HeaderLink from './HeaderLink.astro';
   }
   h2 {
     margin: 0;
+    font-weight: 600; /* one step heavier than the global heading default (500), both synthesized */
+    letter-spacing: 0.01em; /* looser than the global heading default (-0.015em) */
     font-size: 1.2em;
     line-height: 40px;
   }
@@ -47,9 +49,10 @@ import HeaderLink from './HeaderLink.astro';
   nav .internal-links {
     display: flex;
     align-items: center;
+    font-family: var(--display);
     font-size: 0.85em;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.03em;
   }
   nav .internal-links a {
     display: inline-flex;

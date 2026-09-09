@@ -1,0 +1,352 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Type sample — Joan + Source Serif"
+      description="Reference doc for the Joan + Source Serif typography decisions live on the site, with rejected and considered variants."
+    />
+    <meta name="robots" content="noindex" />
+    <style>
+      .note {
+        padding: 1em 1.25em;
+        margin: 0 0 2em 0;
+        background: rgb(var(--gray-light));
+        border-radius: 8px;
+        font-size: 0.95em;
+        color: rgb(var(--gray-dark));
+      }
+      section {
+        margin-bottom: 3em;
+      }
+      section > h2:first-child {
+        margin-bottom: 1em;
+      }
+      section > p.summary {
+        margin-top: -0.5em;
+        margin-bottom: 1.5em;
+        color: rgb(var(--gray));
+        font-size: 0.95em;
+      }
+      p.summary.inline {
+        margin-top: 0.5em;
+        margin-bottom: 0;
+      }
+      .decision {
+        padding-bottom: 1.75em;
+        margin-bottom: 1.75em;
+        border-bottom: 1px solid rgb(var(--gray-light));
+      }
+      .decision:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+      .label {
+        margin: 0 0 0.5em 0;
+        font-size: 0.75em;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgb(var(--gray));
+      }
+      .label.current {
+        font-weight: 700;
+        color: rgb(var(--accent));
+      }
+      .heading-demo {
+        margin: 0;
+        font-family: var(--display);
+        font-size: 1.8em;
+        color: rgb(var(--heading));
+        line-height: 1.2;
+      }
+      .weight-500 {
+        font-weight: 500;
+      }
+      .weight-600 {
+        font-weight: 600;
+      }
+      .weight-400 {
+        font-weight: 400;
+      }
+      .hierarchy-demo {
+        margin: 0 0 0.75em 0;
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: 1.8em;
+      }
+      .hierarchy-demo.size-tracking {
+        letter-spacing: -0.02em;
+      }
+      .hierarchy-demo.size-tracking-color {
+        letter-spacing: -0.02em;
+        color: rgb(var(--accent));
+      }
+      .track-current {
+        letter-spacing: -0.015em;
+      }
+      .track-1 {
+        letter-spacing: -0.005em;
+      }
+      .track-2 {
+        letter-spacing: 0em;
+      }
+      .track-3 {
+        letter-spacing: 0.01em;
+      }
+      .wordmark-compare {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5em;
+      }
+      .wordmark {
+        margin: 0;
+        font-family: var(--display);
+        font-weight: 600;
+        font-size: 1.2em;
+        letter-spacing: 0.01em;
+        color: rgb(var(--accent));
+      }
+      .wordmark.source-serif {
+        font-family: var(--serif);
+        font-weight: 600;
+        letter-spacing: normal;
+      }
+      .wordmark.uppercase {
+        text-transform: uppercase;
+        letter-spacing: 0.02em; /* all-caps reads better with positive tracking, not Joan's default negative */
+      }
+      .wordmark.small-caps {
+        font-variant-caps: small-caps;
+      }
+      .nav-preview {
+        display: flex;
+        align-items: center;
+        gap: 1.4em;
+        font-size: 0.85em;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: rgb(var(--gray));
+      }
+      .nav-preview .active {
+        color: rgb(var(--accent));
+      }
+      .nav-preview.joan {
+        font-family: var(--display);
+      }
+      .nav-preview.tighten-1 {
+        letter-spacing: 0.03em;
+      }
+      .nav-preview.tighten-2 {
+        letter-spacing: 0em;
+      }
+      .nav-preview.tighten-3 {
+        letter-spacing: -0.02em;
+      }
+      .active-weight-preview {
+        font-size: 0.85em;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        font-family: var(--display);
+        color: rgb(var(--accent));
+      }
+      .active-weight-preview.w700 {
+        font-family: var(--serif);
+        letter-spacing: 0.06em;
+      }
+      @media (max-width: 720px) {
+        .wordmark-compare {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>Type sample</h1>
+      <p class="note">
+        Living reference for the typography decisions applied across the site. Each section below is
+        a single decision: the value currently live, what it replaced, and other options that were
+        tried or considered but not adopted. Update this page whenever one of these values changes.
+      </p>
+
+      <section>
+        <h2>Pairing in context</h2>
+        <p class="summary">How the live values actually read in prose, not in isolation.</p>
+        <h1>Some ideas take longer to say plainly</h1>
+        <h2>The long version is usually the first draft</h2>
+        <h3>Editing is where the argument actually happens</h3>
+        <p>
+          A heading followed immediately by a paragraph is the real test — not the isolated scale
+          above. Joan's letterforms are wide and a little formal; a body paragraph in Source Serif
+          right underneath asks whether the transition feels like one voice changing register, or
+          two unrelated typefaces sharing a page.
+        </p>
+        <p>
+          A paragraph also needs to carry <strong>bold</strong>,{' '}
+          <em>italic</em>, a <a href="/">link</a>, and inline <code>code</code> without any of them looking
+          borrowed from elsewhere. Source Serif 4 handles all four natively.
+        </p>
+        <blockquote>
+          <p>A blockquote leans on Source Serif's italic — no display face involved here.</p>
+        </blockquote>
+        <ul>
+          <li>List markers and body copy: Source Serif, as elsewhere on the site</li>
+          <li>Only headings switch to Joan</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Heading weight</h2>
+        <p class="summary">
+          Joan ships one real weight (400) and no italic — every weight below 500+ is browser-
+          synthesized, not a real font file.
+        </p>
+        <div class="decision">
+          <p class="label current">Current — 500 (synthesized)</p>
+          <p class="heading-demo weight-500">The quiet type does more work</p>
+        </div>
+        <div class="decision">
+          <p class="label">Previous — 600 (synthesized)</p>
+          <p class="heading-demo weight-600">The quiet type does more work</p>
+        </div>
+        <div class="decision">
+          <p class="label">Considered — 400 (Joan native, no synthesis)</p>
+          <p class="heading-demo weight-400">The quiet type does more work</p>
+          <p class="summary inline">
+            The workaround for this option: hierarchy from size/tracking/color instead of weight.
+          </p>
+          <p class="hierarchy-demo">Size alone</p>
+          <p class="hierarchy-demo size-tracking">Size, tightened letter-spacing</p>
+          <p class="hierarchy-demo size-tracking-color">Size, tracking, and accent color</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Heading letter-spacing</h2>
+        <p class="summary">Applies to h1–h6 site-wide via the global heading rule.</p>
+        <div class="decision">
+          <p class="label current">Current — -0.015em</p>
+          <p class="heading-demo weight-500 track-current">Editing is where the argument happens</p>
+        </div>
+        <div class="decision">
+          <p class="label">Previous — -0.005em</p>
+          <p class="heading-demo weight-500 track-1">Editing is where the argument happens</p>
+        </div>
+        <div class="decision">
+          <p class="label">Considered — 0em (normal)</p>
+          <p class="heading-demo weight-500 track-2">Editing is where the argument happens</p>
+        </div>
+        <div class="decision">
+          <p class="label">Considered — 0.01em (loosest tried)</p>
+          <p class="heading-demo weight-500 track-3">Editing is where the argument happens</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Nav links (Home / About / RSS)</h2>
+        <p class="summary">Header.astro's .internal-links.</p>
+        <div class="decision">
+          <p class="label current">Current — Joan, 0.03em</p>
+          <div class="nav-preview joan tighten-1">
+            <span class="active">Home</span>
+            <span>About</span>
+            <span>RSS</span>
+          </div>
+        </div>
+        <div class="decision">
+          <p class="label">Previous — Source Serif, 0.06em</p>
+          <div class="nav-preview">
+            <span class="active">Home</span>
+            <span>About</span>
+            <span>RSS</span>
+          </div>
+        </div>
+        <div class="decision">
+          <p class="label">Considered — Joan, 0.06em (untightened)</p>
+          <div class="nav-preview joan">
+            <span class="active">Home</span>
+            <span>About</span>
+            <span>RSS</span>
+          </div>
+        </div>
+        <div class="decision">
+          <p class="label">Considered — Joan, 0em</p>
+          <div class="nav-preview joan tighten-2">
+            <span class="active">Home</span>
+            <span>About</span>
+            <span>RSS</span>
+          </div>
+        </div>
+        <div class="decision">
+          <p class="label">Considered — Joan, -0.02em</p>
+          <div class="nav-preview joan tighten-3">
+            <span class="active">Home</span>
+            <span>About</span>
+            <span>RSS</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Active nav-link weight</h2>
+        <p class="summary">HeaderLink.astro's a.active. Same synthesis caveat as heading weight.</p>
+        <div class="decision">
+          <p class="label current">Current — 600 (synthesized semibold, accepted)</p>
+          <p class="active-weight-preview">Home</p>
+        </div>
+        <div class="decision">
+          <p class="label">Previous — font-weight: bolder (computed 700 against Source Serif)</p>
+          <p class="active-weight-preview w700">Home</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Wordmark ("Perry Wang")</h2>
+        <p class="summary">
+          Header.astro's h2 — inherits Joan from the global heading rule, but sets its own weight
+          and tracking, both looser/heavier than other headings.
+        </p>
+        <div class="decision">
+          <p class="label current">Current — Joan, 600, 0.01em tracking</p>
+          <p class="wordmark">Perry Wang</p>
+        </div>
+        <div class="decision">
+          <p class="label">Tried and rejected — Source Serif override</p>
+          <p class="wordmark source-serif">Perry Wang</p>
+          <p class="summary inline">
+            Applied and reverted the same day — didn't look good against the rest of the header.
+          </p>
+        </div>
+        <div class="decision">
+          <p class="label">Casing, considered — title case is current</p>
+          <div class="wordmark-compare">
+            <div>
+              <p class="label current">Current — Title case</p>
+              <p class="wordmark">Perry Wang</p>
+            </div>
+            <div>
+              <p class="label">Considered — All caps</p>
+              <p class="wordmark uppercase">Perry Wang</p>
+            </div>
+            <div>
+              <p class="label">Considered — Small caps (lower source)</p>
+              <p class="wordmark small-caps">perry wang</p>
+            </div>
+            <div>
+              <p class="label">Considered — Small caps (title-case source)</p>
+              <p class="wordmark small-caps">Perry Wang</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>

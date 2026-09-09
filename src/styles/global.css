@@ -1,5 +1,6 @@
 :root {
   --serif: var(--font-serif), Charter, Georgia, 'Times New Roman', serif;
+  --display: var(--font-display), Charter, Georgia, serif;
   --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
   --black: 26, 22, 18;
   --gray: 112, 104, 96;
@@ -10,6 +11,7 @@
   --accent-hover: 88, 110, 156;
   --heading: 58, 66, 84;
   --image-outline: oklch(0 0 0 / 0.1);
+  --content-width: 620px;
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
@@ -45,7 +47,7 @@ body {
   line-height: 1.65;
 }
 main {
-  width: 620px;
+  width: var(--content-width);
   max-width: calc(100% - 2em);
   margin: auto;
   padding: 2em 1em;
@@ -56,12 +58,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--serif);
-  font-weight: 600;
+  font-family: var(--display);
+  font-weight: 500; /* Joan only ships 400 — this is browser-synthesized medium weight, accepted as a workaround */
   margin: 0 0 0.5em 0;
   color: rgb(var(--heading));
   line-height: 1.2;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   text-wrap: balance;
 }
 h1 {
@@ -78,7 +80,7 @@ h4 {
 }
 strong,
 b {
-  font-weight: 700;
+  font-weight: 600;
 }
 a {
   color: rgb(var(--accent));
