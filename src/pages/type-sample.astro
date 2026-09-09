@@ -9,7 +9,7 @@ import Header from '../components/Header.astro';
   <head>
     <BaseHead
       title="Type sample — Joan + Source Serif"
-      description="Specimen page documenting the Joan headings + Source Serif 4 body pairing used site-wide."
+      description="Reference doc for the Joan + Source Serif typography decisions live on the site, with rejected and considered variants."
     />
     <meta name="robots" content="noindex" />
     <style>
@@ -30,53 +30,65 @@ import Header from '../components/Header.astro';
       section > h2:first-child {
         margin-bottom: 1em;
       }
-      .hierarchy p {
-        margin: 0 0 0.75em 0;
-        font-family: var(--display);
-        font-weight: 400;
+      section > p.summary {
+        margin-top: -0.5em;
+        margin-bottom: 1.5em;
+        color: rgb(var(--gray));
+        font-size: 0.95em;
       }
-      .hierarchy .size-only {
-        font-size: 1.8em;
+      p.summary.inline {
+        margin-top: 0.5em;
+        margin-bottom: 0;
       }
-      .hierarchy .size-tracking {
-        font-size: 1.8em;
-        letter-spacing: -0.02em;
-      }
-      .hierarchy .size-tracking-color {
-        font-size: 1.8em;
-        letter-spacing: -0.02em;
-        color: rgb(var(--accent));
-      }
-      .ab {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2em;
-      }
-      .tracking-steps {
-        display: flex;
-        flex-direction: column;
-        gap: 1.75em;
-      }
-      .tracking-step {
+      .decision {
         padding-bottom: 1.75em;
+        margin-bottom: 1.75em;
         border-bottom: 1px solid rgb(var(--gray-light));
       }
-      .tracking-step:last-child {
+      .decision:last-child {
         border-bottom: none;
+        margin-bottom: 0;
         padding-bottom: 0;
       }
-      .tracking-demo {
-        margin: 0 0 0.3em 0;
+      .label {
+        margin: 0 0 0.5em 0;
+        font-size: 0.75em;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgb(var(--gray));
+      }
+      .label.current {
+        color: rgb(var(--accent));
+        font-weight: 700;
+      }
+      .heading-demo {
+        margin: 0;
         font-family: var(--display);
-        font-weight: 500; /* matches the live, browser-synthesized heading weight */
+        font-size: 1.8em;
         color: rgb(var(--heading));
         line-height: 1.2;
       }
-      .tracking-demo--h1 {
-        font-size: 2.4em;
+      .weight-500 {
+        font-weight: 500;
       }
-      .tracking-demo--h3 {
-        font-size: 1.5em;
+      .weight-600 {
+        font-weight: 600;
+      }
+      .weight-400 {
+        font-weight: 400;
+      }
+      .hierarchy-demo {
+        margin: 0 0 0.75em 0;
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: 1.8em;
+      }
+      .hierarchy-demo.size-tracking {
+        letter-spacing: -0.02em;
+      }
+      .hierarchy-demo.size-tracking-color {
+        letter-spacing: -0.02em;
+        color: rgb(var(--accent));
       }
       .track-current {
         letter-spacing: -0.015em;
@@ -103,17 +115,17 @@ import Header from '../components/Header.astro';
         letter-spacing: -0.015em;
         color: rgb(var(--accent));
       }
+      .wordmark.source-serif {
+        font-family: var(--serif);
+        font-weight: 600;
+        letter-spacing: normal;
+      }
       .wordmark.uppercase {
         text-transform: uppercase;
         letter-spacing: 0.02em; /* all-caps reads better with positive tracking, not Joan's default negative */
       }
       .wordmark.small-caps {
         font-variant-caps: small-caps;
-      }
-      .nav-compare {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5em;
       }
       .nav-preview {
         display: flex;
@@ -139,28 +151,24 @@ import Header from '../components/Header.astro';
       .nav-preview.tighten-3 {
         letter-spacing: -0.02em;
       }
+      .active-weight-preview {
+        font-size: 0.85em;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        font-family: var(--display);
+        color: rgb(var(--accent));
+      }
+      .active-weight-preview.w700 {
+        font-family: var(--serif);
+        letter-spacing: 0.06em;
+      }
       @media (max-width: 720px) {
         main.specimen {
           width: auto;
         }
-        .ab,
         .wordmark-compare {
           grid-template-columns: 1fr;
         }
-      }
-      .ab h3 {
-        margin-bottom: 0.25em;
-      }
-      .ab .source-serif {
-        font-family: var(--serif);
-        font-weight: 600;
-      }
-      .label {
-        margin: 0 0 0.5em 0;
-        font-size: 0.75em;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: rgb(var(--gray));
       }
     </style>
   </head>
@@ -169,191 +177,178 @@ import Header from '../components/Header.astro';
     <main class="specimen">
       <h1>Type sample</h1>
       <p class="note">
-        <strong>Joan ships one weight (400) and no italic.</strong> Headings are set at{' '}
-        <code>font-weight: 500</code>, which the browser synthesizes since Joan has no real medium
-        weight — accepted as a workaround rather than dropping to size/tracking/color alone. Body
-        copy stays on Source Serif 4, which keeps its full weight and italic range natively.
+        Living reference for the typography decisions applied across the site. Each section below is
+        a single decision: the value currently live, what it replaced, and other options that were
+        tried or considered but not adopted. Update this page whenever one of these values changes.
       </p>
 
       <section>
-        <h2>Scale stack</h2>
+        <h2>Pairing in context</h2>
+        <p class="summary">How the live values actually read in prose, not in isolation.</p>
         <h1>Some ideas take longer to say plainly</h1>
         <h2>The long version is usually the first draft</h2>
         <h3>Editing is where the argument actually happens</h3>
-      </section>
-
-      <section>
-        <h2>Heading tracking (looser mockups)</h2>
-        <div class="tracking-steps">
-          <div class="tracking-step">
-            <p class="label">-0.015em (current, global default)</p>
-            <p class="tracking-demo tracking-demo--h1 track-current">
-              Some ideas take longer to say plainly
-            </p>
-            <p class="tracking-demo tracking-demo--h3 track-current">
-              Editing is where the argument happens
-            </p>
-          </div>
-          <div class="tracking-step">
-            <p class="label">-0.005em (previous)</p>
-            <p class="tracking-demo tracking-demo--h1 track-1">
-              Some ideas take longer to say plainly
-            </p>
-            <p class="tracking-demo tracking-demo--h3 track-1">
-              Editing is where the argument happens
-            </p>
-          </div>
-          <div class="tracking-step">
-            <p class="label">0em (normal)</p>
-            <p class="tracking-demo tracking-demo--h1 track-2">
-              Some ideas take longer to say plainly
-            </p>
-            <p class="tracking-demo tracking-demo--h3 track-2">
-              Editing is where the argument happens
-            </p>
-          </div>
-          <div class="tracking-step">
-            <p class="label">0.01em (loosest)</p>
-            <p class="tracking-demo tracking-demo--h1 track-3">
-              Some ideas take longer to say plainly
-            </p>
-            <p class="tracking-demo tracking-demo--h3 track-3">
-              Editing is where the argument happens
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>Heading and body, in rhythm</h2>
         <p>
-          This is the pairing where most of the judgment happens — not the isolated scale above, but
-          a heading followed immediately by a paragraph, the way an actual post reads.
-        </p>
-
-        <h2>A second heading, same test</h2>
-        <p>
-          Joan's letterforms are wide and a little formal; sitting a body paragraph in Source Serif
+          A heading followed immediately by a paragraph is the real test — not the isolated scale
+          above. Joan's letterforms are wide and a little formal; a body paragraph in Source Serif
           right underneath asks whether the transition feels like one voice changing register, or
           two unrelated typefaces sharing a page.
         </p>
-
-        <h2>One more, to be sure</h2>
         <p>
-          Repetition here is deliberate — a single instance can look fine by accident. Three in a
-          row is closer to what a real post feels like scrolling past.
+          A paragraph also needs to carry <strong>bold</strong>,{' '}
+          <em>italic</em>, a <a href="/">link</a>, and inline <code>code</code> without any of them looking
+          borrowed from elsewhere. Source Serif 4 handles all four natively.
         </p>
-      </section>
-
-      <section class="hierarchy">
-        <h2>Hierarchy without weight</h2>
-        <p class="size-only">Size alone</p>
-        <p class="size-tracking">Size, tightened letter-spacing</p>
-        <p class="size-tracking-color">Size, tracking, and accent color</p>
-      </section>
-
-      <section>
-        <h2>Body specimen</h2>
-        <p>
-          A paragraph needs to carry <strong>bold</strong>,{' '}
-          <em>italic</em>, a <a href="/">link</a>, and inline{' '}
-          <code>code</code> without any of them looking borrowed from elsewhere. Source Serif 4 handles
-          all four natively, so none of this is faux-styled.
-        </p>
-      </section>
-
-      <section>
-        <h2>Blockquote and list</h2>
         <blockquote>
-          <p>
-            A blockquote already leans on Source Serif's italic — no display face involved here.
-          </p>
+          <p>A blockquote leans on Source Serif's italic — no display face involved here.</p>
         </blockquote>
         <ul>
           <li>List markers and body copy: Source Serif, as elsewhere on the site</li>
           <li>Only headings switch to Joan</li>
-          <li>Confirms the two don't collide inside mixed content</li>
         </ul>
       </section>
 
       <section>
-        <h2>Site title casing</h2>
-        <div class="wordmark-compare">
-          <div>
-            <p class="label">Title case (current)</p>
-            <p class="wordmark">Perry Wang</p>
+        <h2>Heading weight</h2>
+        <p class="summary">
+          Joan ships one real weight (400) and no italic — every weight below 500+ is browser-
+          synthesized, not a real font file.
+        </p>
+        <div class="decision">
+          <p class="label current">Current — 500 (synthesized)</p>
+          <p class="heading-demo weight-500">The quiet type does more work</p>
+        </div>
+        <div class="decision">
+          <p class="label">Previous — 600 (synthesized)</p>
+          <p class="heading-demo weight-600">The quiet type does more work</p>
+        </div>
+        <div class="decision">
+          <p class="label">Considered — 400 (Joan native, no synthesis)</p>
+          <p class="heading-demo weight-400">The quiet type does more work</p>
+          <p class="summary inline">
+            The workaround for this option: hierarchy from size/tracking/color instead of weight.
+          </p>
+          <p class="hierarchy-demo">Size alone</p>
+          <p class="hierarchy-demo size-tracking">Size, tightened letter-spacing</p>
+          <p class="hierarchy-demo size-tracking-color">Size, tracking, and accent color</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Heading letter-spacing</h2>
+        <p class="summary">Applies to h1–h6 site-wide via the global heading rule.</p>
+        <div class="decision">
+          <p class="label current">Current — -0.015em</p>
+          <p class="heading-demo weight-500 track-current">Editing is where the argument happens</p>
+        </div>
+        <div class="decision">
+          <p class="label">Previous — -0.005em</p>
+          <p class="heading-demo weight-500 track-1">Editing is where the argument happens</p>
+        </div>
+        <div class="decision">
+          <p class="label">Considered — 0em (normal)</p>
+          <p class="heading-demo weight-500 track-2">Editing is where the argument happens</p>
+        </div>
+        <div class="decision">
+          <p class="label">Considered — 0.01em (loosest tried)</p>
+          <p class="heading-demo weight-500 track-3">Editing is where the argument happens</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Nav links (Home / About / RSS)</h2>
+        <p class="summary">Header.astro's .internal-links.</p>
+        <div class="decision">
+          <p class="label current">Current — Joan, 0.03em</p>
+          <div class="nav-preview joan tighten-1">
+            <span class="active">Home</span>
+            <span>About</span>
+            <span>RSS</span>
           </div>
-          <div>
-            <p class="label">All caps</p>
-            <p class="wordmark uppercase">Perry Wang</p>
+        </div>
+        <div class="decision">
+          <p class="label">Previous — Source Serif, 0.06em</p>
+          <div class="nav-preview">
+            <span class="active">Home</span>
+            <span>About</span>
+            <span>RSS</span>
           </div>
-          <div>
-            <p class="label">Small caps (lower)</p>
-            <p class="wordmark small-caps">perry wang</p>
+        </div>
+        <div class="decision">
+          <p class="label">Considered — Joan, 0.06em (untightened)</p>
+          <div class="nav-preview joan">
+            <span class="active">Home</span>
+            <span>About</span>
+            <span>RSS</span>
           </div>
-          <div>
-            <p class="label">Small caps (title case)</p>
-            <p class="wordmark small-caps">Perry Wang</p>
+        </div>
+        <div class="decision">
+          <p class="label">Considered — Joan, 0em</p>
+          <div class="nav-preview joan tighten-2">
+            <span class="active">Home</span>
+            <span>About</span>
+            <span>RSS</span>
+          </div>
+        </div>
+        <div class="decision">
+          <p class="label">Considered — Joan, -0.02em</p>
+          <div class="nav-preview joan tighten-3">
+            <span class="active">Home</span>
+            <span>About</span>
+            <span>RSS</span>
           </div>
         </div>
       </section>
 
       <section>
-        <h2>Nav links</h2>
-        <div class="nav-compare">
-          <div>
-            <p class="label">Current (Source Serif)</p>
-            <div class="nav-preview">
-              <span class="active">Home</span>
-              <span>About</span>
-              <span>RSS</span>
-            </div>
-          </div>
-          <div>
-            <p class="label">Joan, 0.06em (untightened)</p>
-            <div class="nav-preview joan">
-              <span class="active">Home</span>
-              <span>About</span>
-              <span>RSS</span>
-            </div>
-          </div>
-          <div>
-            <p class="label">Joan, 0.03em</p>
-            <div class="nav-preview joan tighten-1">
-              <span class="active">Home</span>
-              <span>About</span>
-              <span>RSS</span>
-            </div>
-          </div>
-          <div>
-            <p class="label">Joan, 0em</p>
-            <div class="nav-preview joan tighten-2">
-              <span class="active">Home</span>
-              <span>About</span>
-              <span>RSS</span>
-            </div>
-          </div>
-          <div>
-            <p class="label">Joan, -0.02em</p>
-            <div class="nav-preview joan tighten-3">
-              <span class="active">Home</span>
-              <span>About</span>
-              <span>RSS</span>
-            </div>
-          </div>
+        <h2>Active nav-link weight</h2>
+        <p class="summary">HeaderLink.astro's a.active. Same synthesis caveat as heading weight.</p>
+        <div class="decision">
+          <p class="label current">Current — 600 (synthesized semibold, accepted)</p>
+          <p class="active-weight-preview">Home</p>
+        </div>
+        <div class="decision">
+          <p class="label">Previous — font-weight: bolder (computed 700 against Source Serif)</p>
+          <p class="active-weight-preview w700">Home</p>
         </div>
       </section>
 
       <section>
-        <h2>Side by side</h2>
-        <div class="ab">
-          <div>
-            <p class="label">Joan, 500 synthesized (current)</p>
-            <h3>The quiet type does more work</h3>
-          </div>
-          <div>
-            <p class="label">Source Serif 4, 600 (previous)</p>
-            <h3 class="source-serif">The quiet type does more work</h3>
+        <h2>Wordmark ("Perry Wang")</h2>
+        <p class="summary">
+          Header.astro's h2 — inherits the global heading rule, so it moves with heading weight and
+          tracking decisions above.
+        </p>
+        <div class="decision">
+          <p class="label current">Current — Joan (matches other headings)</p>
+          <p class="wordmark">Perry Wang</p>
+        </div>
+        <div class="decision">
+          <p class="label">Tried and rejected — Source Serif override</p>
+          <p class="wordmark source-serif">Perry Wang</p>
+          <p class="summary inline">
+            Applied and reverted the same day — didn't look good against the rest of the header.
+          </p>
+        </div>
+        <div class="decision">
+          <p class="label">Casing, considered — title case is current</p>
+          <div class="wordmark-compare">
+            <div>
+              <p class="label current">Current — Title case</p>
+              <p class="wordmark">Perry Wang</p>
+            </div>
+            <div>
+              <p class="label">Considered — All caps</p>
+              <p class="wordmark uppercase">Perry Wang</p>
+            </div>
+            <div>
+              <p class="label">Considered — Small caps (lower source)</p>
+              <p class="wordmark small-caps">perry wang</p>
+            </div>
+            <div>
+              <p class="label">Considered — Small caps (title-case source)</p>
+              <p class="wordmark small-caps">Perry Wang</p>
+            </div>
           </div>
         </div>
       </section>
