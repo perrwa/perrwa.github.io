@@ -68,7 +68,7 @@ import Header from '../components/Header.astro';
       .tracking-demo {
         margin: 0 0 0.3em 0;
         font-family: var(--display);
-        font-weight: 400;
+        font-weight: 600; /* matches the live, browser-synthesized heading weight */
         color: rgb(var(--heading));
         line-height: 1.2;
       }
@@ -169,10 +169,10 @@ import Header from '../components/Header.astro';
     <main class="specimen">
       <h1>Type sample</h1>
       <p class="note">
-        <strong>Joan ships one weight and no italic</strong> — regular 400 only, now applied to every
-        heading site-wide. Hierarchy comes from size, tightened letter-spacing, and the existing heading
-        color instead of bold. Body copy stays on Source Serif 4, which keeps its full weight and italic
-        range.
+        <strong>Joan ships one weight (400) and no italic.</strong> Headings are set at{' '}
+        <code>font-weight: 600</code>, which the browser synthesizes since Joan has no real semibold
+        — accepted as a workaround rather than dropping to size/tracking/color alone. Body copy
+        stays on Source Serif 4, which keeps its full weight and italic range natively.
       </p>
 
       <section>
@@ -348,7 +348,7 @@ import Header from '../components/Header.astro';
         <h2>Side by side</h2>
         <div class="ab">
           <div>
-            <p class="label">Joan, 400 (current)</p>
+            <p class="label">Joan, 600 synthesized (current)</p>
             <h3>The quiet type does more work</h3>
           </div>
           <div>

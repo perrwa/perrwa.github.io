@@ -58,7 +58,7 @@ h4,
 h5,
 h6 {
   font-family: var(--display);
-  font-weight: 400; /* Joan has no bold weight — never synthesize it */
+  font-weight: 600; /* Joan only ships 400 — this is browser-synthesized semibold, accepted as a workaround */
   margin: 0 0 0.5em 0;
   color: rgb(var(--heading));
   line-height: 1.2;
