@@ -68,7 +68,7 @@ import Header from '../components/Header.astro';
       .tracking-demo {
         margin: 0 0 0.3em 0;
         font-family: var(--display);
-        font-weight: 600; /* matches the live, browser-synthesized heading weight */
+        font-weight: 500; /* matches the live, browser-synthesized heading weight */
         color: rgb(var(--heading));
         line-height: 1.2;
       }
@@ -100,7 +100,7 @@ import Header from '../components/Header.astro';
         font-family: var(--display);
         font-weight: 400;
         font-size: 1.2em;
-        letter-spacing: -0.005em;
+        letter-spacing: -0.015em;
         color: rgb(var(--accent));
       }
       .wordmark.uppercase {
@@ -170,9 +170,9 @@ import Header from '../components/Header.astro';
       <h1>Type sample</h1>
       <p class="note">
         <strong>Joan ships one weight (400) and no italic.</strong> Headings are set at{' '}
-        <code>font-weight: 600</code>, which the browser synthesizes since Joan has no real semibold
-        — accepted as a workaround rather than dropping to size/tracking/color alone. Body copy
-        stays on Source Serif 4, which keeps its full weight and italic range natively.
+        <code>font-weight: 500</code>, which the browser synthesizes since Joan has no real medium
+        weight — accepted as a workaround rather than dropping to size/tracking/color alone. Body
+        copy stays on Source Serif 4, which keeps its full weight and italic range natively.
       </p>
 
       <section>
@@ -186,7 +186,7 @@ import Header from '../components/Header.astro';
         <h2>Heading tracking (looser mockups)</h2>
         <div class="tracking-steps">
           <div class="tracking-step">
-            <p class="label">-0.015em (previous)</p>
+            <p class="label">-0.015em (current, global default)</p>
             <p class="tracking-demo tracking-demo--h1 track-current">
               Some ideas take longer to say plainly
             </p>
@@ -195,7 +195,7 @@ import Header from '../components/Header.astro';
             </p>
           </div>
           <div class="tracking-step">
-            <p class="label">-0.005em (current, global default)</p>
+            <p class="label">-0.005em (previous)</p>
             <p class="tracking-demo tracking-demo--h1 track-1">
               Some ideas take longer to say plainly
             </p>
@@ -348,7 +348,7 @@ import Header from '../components/Header.astro';
         <h2>Side by side</h2>
         <div class="ab">
           <div>
-            <p class="label">Joan, 600 synthesized (current)</p>
+            <p class="label">Joan, 500 synthesized (current)</p>
             <h3>The quiet type does more work</h3>
           </div>
           <div>

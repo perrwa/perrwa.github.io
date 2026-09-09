@@ -58,11 +58,11 @@ h4,
 h5,
 h6 {
   font-family: var(--display);
-  font-weight: 600; /* Joan only ships 400 — this is browser-synthesized semibold, accepted as a workaround */
+  font-weight: 500; /* Joan only ships 400 — this is browser-synthesized medium weight, accepted as a workaround */
   margin: 0 0 0.5em 0;
   color: rgb(var(--heading));
   line-height: 1.2;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.015em;
   text-wrap: balance;
 }
 h1 {
