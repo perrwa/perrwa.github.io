@@ -52,11 +52,32 @@ import Header from '../components/Header.astro';
         grid-template-columns: 1fr 1fr;
         gap: 2em;
       }
+      .wordmark-compare {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5em;
+      }
+      .wordmark {
+        margin: 0;
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: 1.2em;
+        letter-spacing: -0.015em;
+        color: rgb(var(--accent));
+      }
+      .wordmark.uppercase {
+        text-transform: uppercase;
+        letter-spacing: 0.02em; /* all-caps reads better with positive tracking, not Joan's default negative */
+      }
+      .wordmark.small-caps {
+        font-variant-caps: small-caps;
+      }
       @media (max-width: 720px) {
         main.specimen {
           width: auto;
         }
-        .ab {
+        .ab,
+        .wordmark-compare {
           grid-template-columns: 1fr;
         }
       }
@@ -144,6 +165,28 @@ import Header from '../components/Header.astro';
           <li>Only headings switch to Joan</li>
           <li>Confirms the two don't collide inside mixed content</li>
         </ul>
+      </section>
+
+      <section>
+        <h2>Site title casing</h2>
+        <div class="wordmark-compare">
+          <div>
+            <p class="label">Title case (current)</p>
+            <p class="wordmark">Perry Wang</p>
+          </div>
+          <div>
+            <p class="label">All caps</p>
+            <p class="wordmark uppercase">Perry Wang</p>
+          </div>
+          <div>
+            <p class="label">Small caps (lower)</p>
+            <p class="wordmark small-caps">perry wang</p>
+          </div>
+          <div>
+            <p class="label">Small caps (title case)</p>
+            <p class="wordmark small-caps">Perry Wang</p>
+          </div>
+        </div>
       </section>
 
       <section>
