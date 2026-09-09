@@ -72,6 +72,26 @@ import Header from '../components/Header.astro';
       .wordmark.small-caps {
         font-variant-caps: small-caps;
       }
+      .nav-compare {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+      }
+      .nav-preview {
+        display: flex;
+        align-items: center;
+        gap: 1.4em;
+        font-size: 0.85em;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: rgb(var(--gray));
+      }
+      .nav-preview .active {
+        color: rgb(var(--accent));
+      }
+      .nav-preview.joan {
+        font-family: var(--display);
+      }
       @media (max-width: 720px) {
         main.specimen {
           width: auto;
@@ -185,6 +205,28 @@ import Header from '../components/Header.astro';
           <div>
             <p class="label">Small caps (title case)</p>
             <p class="wordmark small-caps">Perry Wang</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Nav links</h2>
+        <div class="nav-compare">
+          <div>
+            <p class="label">Current (Source Serif)</p>
+            <div class="nav-preview">
+              <span class="active">Home</span>
+              <span>About</span>
+              <span>RSS</span>
+            </div>
+          </div>
+          <div>
+            <p class="label">Joan</p>
+            <div class="nav-preview joan">
+              <span class="active">Home</span>
+              <span>About</span>
+              <span>RSS</span>
+            </div>
           </div>
         </div>
       </section>
