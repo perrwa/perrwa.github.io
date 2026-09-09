@@ -1,5 +1,6 @@
 :root {
   --serif: var(--font-serif), Charter, Georgia, 'Times New Roman', serif;
+  --display: var(--font-display), Charter, Georgia, serif;
   --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
   --black: 26, 22, 18;
   --gray: 112, 104, 96;
@@ -56,12 +57,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--serif);
-  font-weight: 600;
+  font-family: var(--display);
+  font-weight: 400; /* Joan has no bold weight — never synthesize it */
   margin: 0 0 0.5em 0;
   color: rgb(var(--heading));
   line-height: 1.2;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   text-wrap: balance;
 }
 h1 {

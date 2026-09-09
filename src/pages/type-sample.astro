@@ -2,7 +2,6 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { Font } from 'astro:assets';
 ---
 
 <!doctype html>
@@ -10,23 +9,12 @@ import { Font } from 'astro:assets';
   <head>
     <BaseHead
       title="Type sample — Joan + Source Serif"
-      description="Specimen page pairing Joan headings with Source Serif 4 body text."
+      description="Specimen page documenting the Joan headings + Source Serif 4 body pairing used site-wide."
     />
     <meta name="robots" content="noindex" />
-    <Font cssVariable="--font-display" preload />
     <style>
-      .specimen {
-        --display: var(--font-display), Charter, Georgia, serif;
-      }
       main.specimen {
         width: 720px;
-      }
-      .specimen h1,
-      .specimen h2,
-      .specimen h3 {
-        font-family: var(--display);
-        font-weight: 400; /* Joan has no bold — never synthesize it */
-        letter-spacing: -0.015em;
       }
       .note {
         padding: 1em 1.25em;
@@ -35,9 +23,6 @@ import { Font } from 'astro:assets';
         border-radius: 8px;
         font-size: 0.95em;
         color: rgb(var(--gray-dark));
-      }
-      .note :is(h1, h2, h3) {
-        font-family: var(--serif);
       }
       section {
         margin-bottom: 3em;
@@ -78,10 +63,6 @@ import { Font } from 'astro:assets';
       .ab h3 {
         margin-bottom: 0.25em;
       }
-      .ab .joan {
-        font-family: var(--display);
-        font-weight: 400;
-      }
       .ab .source-serif {
         font-family: var(--serif);
         font-weight: 600;
@@ -100,9 +81,10 @@ import { Font } from 'astro:assets';
     <main class="specimen">
       <h1>Type sample</h1>
       <p class="note">
-        <strong>Joan ships one weight and no italic</strong> — regular 400 only. Every heading below is
-        set at that single weight; hierarchy comes from size, letter-spacing, and color instead of bold.
-        Body copy stays on Source Serif 4, which keeps its full weight and italic range.
+        <strong>Joan ships one weight and no italic</strong> — regular 400 only, now applied to every
+        heading site-wide. Hierarchy comes from size, tightened letter-spacing, and the existing heading
+        color instead of bold. Body copy stays on Source Serif 4, which keeps its full weight and italic
+        range.
       </p>
 
       <section>
@@ -168,11 +150,11 @@ import { Font } from 'astro:assets';
         <h2>Side by side</h2>
         <div class="ab">
           <div>
-            <p class="label">Joan, 400</p>
-            <h3 class="joan">The quiet type does more work</h3>
+            <p class="label">Joan, 400 (current)</p>
+            <h3>The quiet type does more work</h3>
           </div>
           <div>
-            <p class="label">Source Serif 4, 600</p>
+            <p class="label">Source Serif 4, 600 (previous)</p>
             <h3 class="source-serif">The quiet type does more work</h3>
           </div>
         </div>
