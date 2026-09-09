@@ -11,6 +11,7 @@
   --accent-hover: 88, 110, 156;
   --heading: 58, 66, 84;
   --image-outline: oklch(0 0 0 / 0.1);
+  --content-width: 620px;
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
@@ -46,7 +47,7 @@ body {
   line-height: 1.65;
 }
 main {
-  width: 620px;
+  width: var(--content-width);
   max-width: calc(100% - 2em);
   margin: auto;
   padding: 2em 1em;

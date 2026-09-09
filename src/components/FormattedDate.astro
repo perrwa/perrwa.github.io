@@ -4,14 +4,19 @@ interface Props {
 }
 
 const { date } = Astro.props;
+
+const parts = new Intl.DateTimeFormat('en-us', {
+  year: 'numeric',
+  month: 'short',
+  day: '2-digit',
+}).formatToParts(date);
+const get = (type: string) => parts.find((part) => part.type === type)?.value;
+const formatted = `${get('year')} ${get('month')} ${get('day')}`;
 ---
 
-<time datetime={date.toISOString()}>
-  {
-    date.toLocaleDateString('en-us', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    })
+<time datetime={date.toISOString()}>{formatted}</time>
+<style>
+  time {
+    font-variant-numeric: tabular-nums;
   }
-</time>
+</style>
