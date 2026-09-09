@@ -1,0 +1,183 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { Font } from 'astro:assets';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Type sample — Joan + Source Serif"
+      description="Specimen page pairing Joan headings with Source Serif 4 body text."
+    />
+    <meta name="robots" content="noindex" />
+    <Font cssVariable="--font-display" preload />
+    <style>
+      .specimen {
+        --display: var(--font-display), Charter, Georgia, serif;
+      }
+      main.specimen {
+        width: 720px;
+      }
+      .specimen h1,
+      .specimen h2,
+      .specimen h3 {
+        font-family: var(--display);
+        font-weight: 400; /* Joan has no bold — never synthesize it */
+        letter-spacing: -0.015em;
+      }
+      .note {
+        padding: 1em 1.25em;
+        margin: 0 0 2em 0;
+        background: rgb(var(--gray-light));
+        border-radius: 8px;
+        font-size: 0.95em;
+        color: rgb(var(--gray-dark));
+      }
+      .note :is(h1, h2, h3) {
+        font-family: var(--serif);
+      }
+      section {
+        margin-bottom: 3em;
+      }
+      section > h2:first-child {
+        margin-bottom: 1em;
+      }
+      .hierarchy p {
+        margin: 0 0 0.75em 0;
+        font-family: var(--display);
+        font-weight: 400;
+      }
+      .hierarchy .size-only {
+        font-size: 1.8em;
+      }
+      .hierarchy .size-tracking {
+        font-size: 1.8em;
+        letter-spacing: -0.02em;
+      }
+      .hierarchy .size-tracking-color {
+        font-size: 1.8em;
+        letter-spacing: -0.02em;
+        color: rgb(var(--accent));
+      }
+      .ab {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2em;
+      }
+      @media (max-width: 720px) {
+        main.specimen {
+          width: auto;
+        }
+        .ab {
+          grid-template-columns: 1fr;
+        }
+      }
+      .ab h3 {
+        margin-bottom: 0.25em;
+      }
+      .ab .joan {
+        font-family: var(--display);
+        font-weight: 400;
+      }
+      .ab .source-serif {
+        font-family: var(--serif);
+        font-weight: 600;
+      }
+      .label {
+        margin: 0 0 0.5em 0;
+        font-size: 0.75em;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgb(var(--gray));
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main class="specimen">
+      <h1>Type sample</h1>
+      <p class="note">
+        <strong>Joan ships one weight and no italic</strong> — regular 400 only. Every heading below is
+        set at that single weight; hierarchy comes from size, letter-spacing, and color instead of bold.
+        Body copy stays on Source Serif 4, which keeps its full weight and italic range.
+      </p>
+
+      <section>
+        <h2>Scale stack</h2>
+        <h1>Some ideas take longer to say plainly</h1>
+        <h2>The long version is usually the first draft</h2>
+        <h3>Editing is where the argument actually happens</h3>
+      </section>
+
+      <section>
+        <h2>Heading and body, in rhythm</h2>
+        <p>
+          This is the pairing where most of the judgment happens — not the isolated scale above, but
+          a heading followed immediately by a paragraph, the way an actual post reads.
+        </p>
+
+        <h2>A second heading, same test</h2>
+        <p>
+          Joan's letterforms are wide and a little formal; sitting a body paragraph in Source Serif
+          right underneath asks whether the transition feels like one voice changing register, or
+          two unrelated typefaces sharing a page.
+        </p>
+
+        <h2>One more, to be sure</h2>
+        <p>
+          Repetition here is deliberate — a single instance can look fine by accident. Three in a
+          row is closer to what a real post feels like scrolling past.
+        </p>
+      </section>
+
+      <section class="hierarchy">
+        <h2>Hierarchy without weight</h2>
+        <p class="size-only">Size alone</p>
+        <p class="size-tracking">Size, tightened letter-spacing</p>
+        <p class="size-tracking-color">Size, tracking, and accent color</p>
+      </section>
+
+      <section>
+        <h2>Body specimen</h2>
+        <p>
+          A paragraph needs to carry <strong>bold</strong>,{' '}
+          <em>italic</em>, a <a href="/">link</a>, and inline{' '}
+          <code>code</code> without any of them looking borrowed from elsewhere. Source Serif 4 handles
+          all four natively, so none of this is faux-styled.
+        </p>
+      </section>
+
+      <section>
+        <h2>Blockquote and list</h2>
+        <blockquote>
+          <p>
+            A blockquote already leans on Source Serif's italic — no display face involved here.
+          </p>
+        </blockquote>
+        <ul>
+          <li>List markers and body copy: Source Serif, as elsewhere on the site</li>
+          <li>Only headings switch to Joan</li>
+          <li>Confirms the two don't collide inside mixed content</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Side by side</h2>
+        <div class="ab">
+          <div>
+            <p class="label">Joan, 400</p>
+            <h3 class="joan">The quiet type does more work</h3>
+          </div>
+          <div>
+            <p class="label">Source Serif 4, 600</p>
+            <h3 class="source-serif">The quiet type does more work</h3>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>

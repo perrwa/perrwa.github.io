@@ -6,7 +6,12 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 export default defineConfig({
   site: 'https://perrwa.github.io',
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => !page.includes('/type-sample'),
+    }),
+  ],
   fonts: [
     {
       provider: fontProviders.google(),
@@ -14,6 +19,14 @@ export default defineConfig({
       cssVariable: '--font-serif',
       weights: [400, 600, 700],
       styles: ['normal', 'italic'],
+      fallbacks: ['Charter', 'Georgia', 'serif'],
+    },
+    {
+      provider: fontProviders.google(),
+      name: 'Joan',
+      cssVariable: '--font-display',
+      weights: [400],
+      styles: ['normal'],
       fallbacks: ['Charter', 'Georgia', 'serif'],
     },
   ],
