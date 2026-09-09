@@ -13,9 +13,6 @@ import Header from '../components/Header.astro';
     />
     <meta name="robots" content="noindex" />
     <style>
-      main.specimen {
-        width: 720px;
-      }
       .note {
         padding: 1em 1.25em;
         margin: 0 0 2em 0;
@@ -163,9 +160,6 @@ import Header from '../components/Header.astro';
         letter-spacing: 0.06em;
       }
       @media (max-width: 720px) {
-        main.specimen {
-          width: auto;
-        }
         .wordmark-compare {
           grid-template-columns: 1fr;
         }
@@ -174,7 +168,7 @@ import Header from '../components/Header.astro';
   </head>
   <body>
     <Header />
-    <main class="specimen">
+    <main>
       <h1>Type sample</h1>
       <p class="note">
         Living reference for the typography decisions applied across the site. Each section below is
